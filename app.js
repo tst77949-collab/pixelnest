@@ -16,7 +16,80 @@
     elements.forEach(function (el) { el.classList.remove('active'); });
   }
 
-  // ---------- tab pills (Agent SDK / Mobile / Web) ----------
+  // ---------- tabs + sort pills (filtering + reordering, not cosmetic) ----------
+
+  // Platform assignment per card (data-app value -> tab). Web is the default
+  // platform of this gallery; Mobile/Agent SDK variants are tagged explicitly.
+  var TAB_RULES = [
+    { tab: 'mobile',    apps: ['habit', 'recipe', 'fitness', 'journal', 'chat'] },
+    { tab: 'agent sdk', apps: ['analytics', 'finance', 'saas'] },
+    { tab: 'web',       apps: ['checkout', 'onboarding', 'marketplace', 'booking',
+                               'landing', 'ecommerce', 'gallery', 'dashboard'] }
+  ];
+
+  function tabForCard(card) {
+    var app = normalize(card.getAttribute('data-app'));
+    for (var i = 0; i < TAB_RULES.length; i++) {
+      var apps = TAB_RULES[i].apps;
+      for (var j = 0; j < apps.length; j++) {
+        if (app.indexOf(apps[j]) !== -1) return TAB_RULES[i].tab;
+      }
+    }
+    return 'web';
+  }
+
+  var currentTab = 'agent sdk'; // first pill is active by default in the HTML
+  var currentSort = 'latest';
+
+  function cardDate(card) {
+    // Synthetic recency: index in DOM = publish order (latest first).
+    // Cards get a stable synthetic timestamp for sorting.
+    if (!card._pnestDate) {
+      var idx = cards.indexOf(card);
+      card._pnestDate = 1000 - idx; // earlier in DOM = newer
+    }
+    return card._pnestDate;
+  }
+
+  function cardScore(card) {
+    // Synthetic relevance: char-richness of the SVG mockup as a quality proxy,
+    // combined with journey text length (richer mock = more "recommended").
+    if (!card._pnestScore) {
+      var svg = card.querySelector('svg');
+      var rich = svg ? svg.outerHTML.length : 0;
+      var journey = (card.getAttribute('data-journey') || '').length;
+      card._pnestScore = rich + journey * 3;
+    }
+    return card._pnestScore;
+  }
+
+  function applyTabsAndSort() {
+    var grid = document.querySelector('.card-grid, .cards, main');
+    cards = cards.length ? cards : all('.card');
+
+    // filter by tab
+    var visible = cards.filter(function (card) {
+      var show = tabForCard(card) === currentTab;
+      card._pnestTabOk = show;
+      return show;
+    });
+
+    // sort within visible
+    if (currentSort === 'recommended') {
+      visible.sort(function (a, b) { return cardScore(b) - cardScore(a); });
+    } else {
+      visible.sort(function (a, b) { return cardDate(b) - cardDate(a); });
+    }
+
+    // reorder DOM: append visible in sorted order, hide the rest
+    visible.forEach(function (card) {
+      card.style.display = '';
+      if (grid) grid.appendChild(card);
+    });
+    cards.forEach(function (card) {
+      if (!card._pnestTabOk) card.style.display = 'none';
+    });
+  }
 
   function initTabs() {
     var pills = all('.tab-pill');
@@ -24,11 +97,11 @@
       pill.addEventListener('click', function () {
         clearActive(pills);
         pill.classList.add('active');
+        currentTab = normalize(pill.textContent);
+        applyTabsAndSort();
       });
     });
   }
-
-  // ---------- sort pills (Latest / Recommended) ----------
 
   function initSort() {
     var pills = all('.sort-pill');
@@ -37,6 +110,8 @@
         if (pill.classList.contains('active')) return; // one always stays active
         clearActive(pills);
         pill.classList.add('active');
+        currentSort = normalize(pill.textContent);
+        applyTabsAndSort();
       });
     });
   }
