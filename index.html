@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelNest — Show AI what good looks like.</title>
+  <meta name="description" content="PixelNest — searchable UI references for AI-assisted design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. Header: 64px sticky -->
+  <header class="site-header">
+    <a href="#" class="logo" id="logo">PixelNest</a>
+
+    <label class="search-pill header-search" for="header-search-input">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="header-search-input" type="search" placeholder="Search UI references..." aria-label="Search UI references">
+    </label>
+
+    <nav class="header-actions">
+      <a href="#" class="text-link">Log in</a>
+      <a href="#" class="cta-button">Get Full Access</a>
+    </nav>
+  </header>
+
+  <!-- 2. Hero -->
+  <section class="hero">
+    <h1>What are you designing <em class="highlight">next</em>?</h1>
+    <p class="hero-sub">Search screens and journeys</p>
+
+    <label class="search-pill hero-search" for="hero-search-input">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="hero-search-input" type="search" placeholder="Search UI references..." aria-label="Search UI references">
+    </label>
+  </section>
+
+  <!-- 3. Tab bar (sticky under header) -->
+  <nav class="tab-bar" aria-label="Platform filter">
+    <button type="button" class="tab-pill active" data-tab="agent-sdk">Agent SDK</button>
+    <button type="button" class="tab-pill" data-tab="mobile">Mobile</button>
+    <button type="button" class="tab-pill" data-tab="web">Web</button>
+  </nav>
+
+  <!-- 4. Sort row -->
+  <div class="sort-row">
+    <button type="button" class="sort-pill active" data-sort="latest">Latest</button>
+    <button type="button" class="sort-pill" data-sort="recommended">Recommended</button>
+  </div>
+
+  <!-- 5. Card grid: 12 cards -->
+  <main class="card-grid" id="card-grid">
+
+    <!-- Card 1 -->
+    <article class="card" data-app="Habit tracker" data-journey="clear distinctive direction">
+      <a class="card-link" href="#" aria-label="Habit tracker — clear distinctive direction">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 34l8 8 16-18"/></svg>
+        </div>
+        <p class="card-caption">Habit tracker — clear distinctive direction<span class="caption-muted">Daily-streak journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card" data-app="Dark analytics dashboard" data-journey="metrics overview">
+      <a class="card-link" href="#" aria-label="Dark analytics dashboard — metrics overview">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 60V30h14v30M24 60V16h14v44M44 60V38h14v22M2 60h60"/></svg>
+        </div>
+        <p class="card-caption">Dark analytics dashboard<span class="caption-muted">Metrics overview journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="card" data-app="E-commerce checkout flow" data-journey="cart to payment">
+      <a class="card-link" href="#" aria-label="E-commerce checkout flow — cart to payment">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="52" r="4"/><circle cx="48" cy="52" r="4"/><path d="M4 6h8l8 34h34l6-24H16"/></svg>
+        </div>
+        <p class="card-caption">E-commerce checkout flow<span class="caption-muted">Cart to payment journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="card" data-app="SaaS landing hero" data-journey="first impression">
+      <a class="card-link" href="#" aria-label="SaaS landing hero — first impression">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12h48M8 24h32M8 34h40M8 44h24"/></svg>
+        </div>
+        <p class="card-caption">SaaS landing hero<span class="caption-muted">First impression journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 5 -->
+    <article class="card" data-app="Onboarding journey" data-journey="welcome to first task">
+      <a class="card-link" href="#" aria-label="Onboarding journey — welcome to first task">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="16" r="8"/><path d="M12 56c2-12 10-18 20-18s18 6 20 18"/></svg>
+        </div>
+        <p class="card-caption">Onboarding journey<span class="caption-muted">Welcome to first task journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 6 -->
+    <article class="card" data-app="Recipe app home" data-journey="browse to cook">
+      <a class="card-link" href="#" aria-label="Recipe app home — browse to cook">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M44 8c-6 4-10 10-10 16h14c4 0 8-2 8-8s-6-10-12-8zM16 14h20M16 14v14c0 4 2 6 6 6s6-2 6-6M10 34h32l-4 22H14l-4-22z"/></svg>
+        </div>
+        <p class="card-caption">Recipe app home<span class="caption-muted">Browse to cook journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 7 -->
+    <article class="card" data-app="Finance portfolio" data-journey="assets at a glance">
+      <a class="card-link" href="#" aria-label="Finance portfolio — assets at a glance">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="6"/><path d="M16 42l10-10 8 8 14-16"/></svg>
+        </div>
+        <p class="card-caption">Finance portfolio<span class="caption-muted">Assets at a glance journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 8 -->
+    <article class="card" data-app="Fitness log" data-journey="workout history">
+      <a class="card-link" href="#" aria-label="Fitness log — workout history">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v48M52 8v48M12 24h40M12 40h40M8 16h8M8 48h8M48 16h8M48 48h8"/></svg>
+        </div>
+        <p class="card-caption">Fitness log<span class="caption-muted">Workout history journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 9 -->
+    <article class="card" data-app="Journal notes app" data-journey="write and reflect">
+      <a class="card-link" href="#" aria-label="Journal notes app — write and reflect">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6h36v52l-8-6-10 6-10-6-8 6V6z"/><path d="M24 20h16M24 30h16M24 40h10"/></svg>
+        </div>
+        <p class="card-caption">Journal notes app<span class="caption-muted">Write and reflect journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 10 -->
+    <article class="card" data-app="Marketplace listing" data-journey="search to buy">
+      <a class="card-link" href="#" aria-label="Marketplace listing — search to buy">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 26l4-14h40l4 14M8 26v30h48V26M8 26h48M24 40h12"/></svg>
+        </div>
+        <p class="card-caption">Marketplace listing<span class="caption-muted">Search to buy journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 11 -->
+    <article class="card" data-app="Booking flow" data-journey="dates to confirmation">
+      <a class="card-link" href="#" aria-label="Booking flow — dates to confirmation">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="48" height="48" rx="6"/><path d="M8 24h48M20 6v10M44 6v10M16 34h6M28 34h6M40 34h6M16 44h6M28 44h6"/></svg>
+        </div>
+        <p class="card-caption">Booking flow<span class="caption-muted">Dates to confirmation journey &middot; Web</span></p>
+      </a>
+    </article>
+
+    <!-- Card 12 -->
+    <article class="card" data-app="Chat interface" data-journey="conversation thread">
+      <a class="card-link" href="#" aria-label="Chat interface — conversation thread">
+        <div class="card-img">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M56 30c0 12-11 22-24 22-3 0-6-1-9-2l-13 4 4-11c-3-4-4-8-4-13 0-12 10-22 22-22s24 10 24 22z"/></svg>
+        </div>
+        <p class="card-caption">Chat interface<span class="caption-muted">Conversation thread journey &middot; Web</span></p>
+      </a>
+    </article>
+
+  </main>
+
+  <!-- 7. Footer -->
+  <footer class="footer">
+    <span class="footer-brand">PixelNest</span>
+    <span> — Built with a team of 9 AI agents &middot; 2026</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
