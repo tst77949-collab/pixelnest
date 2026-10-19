@@ -183,6 +183,7 @@
     initSearch();
     initLogoScroll();
     cards = all('.card');
+    applyTabsAndSort(); // initial render must match the active pill (audit residual-risk fix)
   }
 
   if (document.readyState === 'loading') {
